@@ -43,12 +43,17 @@ class _PalindromeScreenState extends State<PalindromeScreen> {
               MyButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    String original = firstController.text;
-                    String reversed =
-                    original
-                        .split('')
-                        .reversed
-                        .join('');
+
+                    int numb = int.parse(firstController.text);
+
+                    int original = numb;
+                    int reversed = 0;
+
+                    while (numb > 0) {
+                      int digit = numb % 10;
+                      reversed = reversed * 10 + digit;
+                      numb ~/= 10;
+                    }
 
                     if (original == reversed) {
                       showMySnackBar(
